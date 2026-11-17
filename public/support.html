@@ -1,0 +1,27 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Support — {{APP_NAME}}</title><meta name="theme-color" content="#0f1115"><link rel="icon" href="/icons/icon-192.png"><link rel="stylesheet" href="/style.css"></head>
+<body><header class="top"><div class="wrap"><a class="brand" href="/"><img src="/icons/icon-192.png" alt="">{{APP_NAME}}</a><a href="/" style="font-size:14px">← Editor</a></div></header>
+<main class="doc">
+<h1>Support</h1>
+<p class="upd">We usually reply within 1–2 business days. Reports of abuse are reviewed within 24 hours.</p>
+
+<h2>FAQ</h2>
+<p><b>Do you keep my photos?</b><br>No. Photos are processed and then discarded. See the <a href="/privacy">Privacy Policy</a>.</p>
+<p><b>Why was my photo blocked?</b><br>Our safety filter blocks photos with nudity or revealing content and results that might be inappropriate. Try a photo where the person is fully clothed.</p>
+<p><b>The result doesn’t look like me.</b><br>Try a lower intensity, a well-lit photo and one person in the frame. If a result looks wrong or offensive, please report it.</p>
+<p><b>Is there a limit?</b><br>Yes, a daily number of free edits per device/network to prevent abuse.</p>
+<p><b>Is it free?</b><br>Yes, currently.</p>
+
+<h2>Contact us</h2>
+<p>Email <a href="mailto:{{SUPPORT_EMAIL}}">{{SUPPORT_EMAIL}}</a> or send a message:</p>
+<form class="form" id="contactForm">
+  <label>Your email (optional, if you want a reply)<input type="email" name="email" maxlength="200"></label>
+  <label>Message<textarea name="message" rows="5" required minlength="5" maxlength="2000"></textarea></label>
+  <button class="btn small" type="submit">Send</button>
+  <p id="contactStatus" class="note"></p>
+</form>
+<script src="/support.js" defer></script>
+</main>
+<footer><div class="wrap"><span>© 2026 {{COMPANY}}</span><nav><a href="/privacy">Privacy</a><a href="/terms">Terms</a><a href="/guidelines">Content Guidelines</a><a href="/delete-data">Delete my data</a><a href="/support">Support</a></nav></div></footer>
+</body></html>

@@ -1,0 +1,19 @@
+{
+  "name": "body-editor-ai",
+  "version": "1.0.0",
+  "private": true,
+  "description": "AI body & style photo editor powered by fal.ai, with built-in content safety",
+  "main": "server.js",
+  "type": "module",
+  "engines": { "node": ">=20" },
+  "scripts": {
+    "start": "node server.js",
+    "test": "node test/smoke.js"
+  },
+  "dependencies": {
+    "@fal-ai/client": "^1.2.0",
+    "express": "^4.21.2",
+    "express-rate-limit": "^7.5.0",
+    "helmet": "^8.0.0"
+  }
+}

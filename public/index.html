@@ -1,0 +1,110 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<title>{{APP_NAME}} — AI body &amp; style photo editor</title>
+<meta name="description" content="Retouch your photos with AI: tone your figure, add muscle definition, try new outfits, adjust posture and proportions, retouch skin and try on tattoos.">
+<meta name="theme-color" content="#0f1115">
+<link rel="manifest" href="/manifest.webmanifest">
+<link rel="icon" href="/icons/icon-192.png">
+<link rel="apple-touch-icon" href="/icons/icon-180.png">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta property="og:title" content="{{APP_NAME}} — AI body &amp; style photo editor">
+<meta property="og:description" content="Tone, muscles, outfits, posture, skin and tattoo try-on in one tap.">
+<link rel="stylesheet" href="/style.css">
+</head>
+<body>
+<header class="top"><div class="wrap">
+  <a class="brand" href="/"><img src="/icons/icon-192.png" alt="">{{APP_NAME}}</a>
+  <div class="lang" id="lang"><button data-l="en">EN</button><button data-l="uk">UA</button><button data-l="ru">RU</button></div>
+</div></header>
+
+<main class="wrap">
+  <section class="hero">
+    <h1 data-i="hero">Your photo, <span>your best shape</span></h1>
+    <p data-i="sub">Tone your figure, add muscle, try new outfits, fix posture and retouch skin — realistic AI edits in seconds.</p>
+    <div class="badges">
+      <span class="badge" data-i="b1">🔒 Photos are not stored</span>
+      <span class="badge" data-i="b2">🛡️ Built-in safety filter</span>
+      <span class="badge" data-i="b3">⚡ Results in ~10 seconds</span>
+    </div>
+  </section>
+
+  <section class="editor">
+    <div class="card">
+      <h3 data-i="choose">Choose an edit</h3>
+      <div class="tools" id="tools"></div>
+      <div class="opts" id="opts"></div>
+      <div class="level" id="levelBox">
+        <label><span data-i="intensity">Intensity</span><span id="levelVal">3</span></label>
+        <input type="range" id="level" min="1" max="5" value="3">
+      </div>
+      <label class="consent"><input type="checkbox" id="consent">
+        <span data-i="consent">I am 18+, this is my photo or I have the person’s permission, and I agree to the <a href="/terms" target="_blank">Terms</a> and <a href="/guidelines" target="_blank">Content Guidelines</a>.</span></label>
+      <button class="btn" id="apply" disabled data-i="apply">✨ Apply edit</button>
+      <p class="note" data-i="note">Edits are made by AI and may be imperfect. Results are labelled “AI-edited” on download. Don’t use edited photos to deceive or harass anyone.</p>
+    </div>
+
+    <div class="card stage" id="stage">
+      <label class="drop" id="drop">
+        <div class="big">📷</div>
+        <b data-i="upload">Upload a photo</b>
+        <span data-i="uploadHint">Tap or drop a JPEG/PNG. Best: one person, full or half body, good light.</span>
+        <input type="file" id="file" accept="image/jpeg,image/png,image/webp" hidden>
+      </label>
+      <div id="view" style="display:none;width:100%">
+        <div class="compare" id="compare">
+          <img id="imgBefore" alt="Original photo">
+          <div class="after" id="afterWrap"><img id="imgAfter" alt="Edited photo"></div>
+          <div class="bar" id="bar"></div>
+          <span class="tag l" data-i="before">Before</span><span class="tag r" data-i="after">After</span>
+        </div>
+        <div class="actions">
+          <button class="btn small" id="download" disabled data-i="download">⬇ Download</button>
+          <button class="btn small ghost" id="useResult" disabled data-i="continue">↻ Keep editing this result</button>
+          <button class="btn small ghost" id="newPhoto" data-i="new">New photo</button>
+          <button class="btn small ghost" id="report" data-i="report">⚑ Report</button>
+        </div>
+      </div>
+      <div class="loading" id="loading"><div class="spin"></div><span data-i="working">AI is editing your photo…</span></div>
+    </div>
+  </section>
+
+  <section class="features">
+    <div class="card"><b data-i="f1t">💪 Body &amp; fitness</b><p data-i="f1">Slim &amp; tone, muscle definition for arms, chest or legs, a fitter waist — always realistic and natural.</p></div>
+    <div class="card"><b data-i="f2t">👔 Outfit try-on</b><p data-i="f2">See yourself in a business suit, streetwear, evening wear, a vyshyvanka and more.</p></div>
+    <div class="card"><b data-i="f3t">📏 Height &amp; posture</b><p data-i="f3">Balanced proportions, straighter back and a confident stance.</p></div>
+    <div class="card"><b data-i="f4t">🎨 Skin &amp; tattoos</b><p data-i="f4">Natural skin retouch, try a tattoo before you get it, or remove existing ones.</p></div>
+  </section>
+</main>
+
+<footer><div class="wrap">
+  <span>© 2026 {{COMPANY}}</span>
+  <nav><a href="/privacy">Privacy</a><a href="/terms">Terms</a><a href="/guidelines">Content Guidelines</a><a href="/delete-data">Delete my data</a><a href="/support">Support</a></nav>
+</div></footer>
+
+<div class="modal" id="ageGate"><div class="card">
+  <h2 data-i="ageT">Welcome 👋</h2>
+  <p data-i="ageP">{{APP_NAME}} is for adults (18+). We don’t store your photos, and edits that remove clothing or sexualise anyone are blocked.</p>
+  <div class="row"><button class="btn" id="ageYes" data-i="ageYes">I’m 18 or older</button><button class="btn ghost" id="ageNo" data-i="ageNo">I’m under 18</button></div>
+</div></div>
+
+<div class="modal" id="reportModal"><div class="card">
+  <h2 data-i="repT">Report a problem</h2>
+  <p data-i="repP">Tell us if a result was inappropriate, offensive or harmful. We review every report within 24 hours.</p>
+  <select id="repReason">
+    <option value="inappropriate">Inappropriate or sexual result</option>
+    <option value="offensive">Offensive or hateful result</option>
+    <option value="identity">Changed identity / looks like someone else</option>
+    <option value="abuse">Someone used my photo without permission</option>
+    <option value="other">Other</option>
+  </select>
+  <textarea id="repDetails" rows="3" maxlength="1000" placeholder="Details (optional)"></textarea>
+  <div class="row"><button class="btn" id="repSend" data-i="send">Send report</button><button class="btn ghost" id="repCancel" data-i="cancel">Cancel</button></div>
+</div></div>
+
+<div class="toast" id="toast"></div>
+<script src="/app.js" defer></script>
+</body>
+</html>
